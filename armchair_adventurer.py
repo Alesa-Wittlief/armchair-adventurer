@@ -11,6 +11,11 @@ def armchair_adventurer_game():
     print("Have an insatiable thirst to learn more about your dream")
     print("destination before you book that flight? Take our short")
     print("quiz and we'll suggest the perfect book for your journey!")
+
+def get_player_name():
+    name = input("\nBefore we begin, what is your name? ")
+    print(f"\nNice to meet you, {name}! Let's find your perfect travel book.")
+    return name
     
 def hobby():
     print("\nWhich of the following hobbies interests you the most?")
@@ -48,7 +53,7 @@ def country():
         print("Please enter 1, 2, or 3")
         return country() # Asks again if answer is not valid
     
-def get_book(hobby, country):
+def get_book(hobby, country, name):
     books = {
         ("hiking", "spain"):              "The Long Road Home by Alesa Teague",
         ("hiking", "scotland"):           "Scotland by Rick Steves",
@@ -64,13 +69,15 @@ def get_book(hobby, country):
     print(f"\nBased on your love of {hobby} and your dream trip to")
     print(f"{country.title()}, we recommend:")
     print(f"\n  📖  {recommendation}\n")
-    print("Happy reading, and happy travels!")
+    print(f"Happy reading, {name}, and happy travels!")
+    print("─" * 45)
 
 def main():
     armchair_adventurer_game()
-    player_hobby   = hobby()
+    name = get_player_name()
+    player_hobby = hobby()
     player_country = country()
-    get_book(player_hobby, player_country)
+    get_book(player_hobby, player_country, name)
 
 main()
 
