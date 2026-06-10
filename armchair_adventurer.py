@@ -71,13 +71,26 @@ def get_book(hobby, country, name):
     print(f"\n  📖  {recommendation}\n")
     print(f"Happy reading, {name}, and happy travels!")
     print("─" * 45)
+    return recommendation
+
+def save_results(name, player_hobby, player_country, recommendation):
+    filename = "my_travel_recommendation.txt"
+    with open(filename, "w") as f:
+        f.write("Armchair Adventurer - Your Travel Recommendation\n")
+        f.write("-" * 45 + "\n")
+        f.write(f"Name: {name}\n")
+        f.write(f"Hobby: {player_hobby}\n")
+        f.write(f"Dream Destination: {player_country.title()}\n")
+        f.write(f"Recommended Book: {recommendation}\n")
+    print(f"\n✅ Your recommendation has been saved to '{filename}'!")
 
 def main():
     armchair_adventurer_game()
     name = get_player_name()
     player_hobby = hobby()
     player_country = country()
-    get_book(player_hobby, player_country, name)
+    recommendation = get_book(player_hobby, player_country, name)
+    save_results(name, player_hobby, player_country, recommendation)
 
 main()
 
